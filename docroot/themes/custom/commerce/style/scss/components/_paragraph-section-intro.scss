@@ -1,0 +1,53 @@
+//Section Intro Styles
+
+.paragraph--type--section-intro {
+  @include clearfix;
+  margin: 40px 15px;
+  border-bottom: 5px solid rgba($color-white, .4);
+
+  .content_wrapper {
+    text-align: center;
+  }
+
+  .field--name-field-intro-image {
+    display: block;
+    margin: 0 auto 20px auto;
+
+    @include mq($bp580) {
+      float:left;
+      margin-right: 34px;
+    }
+  }
+
+  .field--name-field-title {
+    color: $color-calypso;
+    font-family: Montserrat;
+    font-size: 2.4rem;
+    font-weight: 600;
+    line-height: 1.42;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  .field--name-field-description {
+    font-family: Lato;
+    font-size: 2.0rem;
+    line-height: 1.5;
+    color: $color-mine-shaft;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  @include mq($bp1024) {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-bottom: 65px;
+
+    .cta_wrapper {
+      margin-left: 20px;
+      .paragraph--type--cta-block {
+        margin: 0;
+      }
+    }
+  }
+}

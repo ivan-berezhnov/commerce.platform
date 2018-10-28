@@ -1,0 +1,14 @@
+uuid: 48be4f98-d7aa-4e0a-a489-1dd1ba820402
+name: WinSport.Shop
+mail: ivan.berezhnov@icloud.com
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /node
+admin_compact_mode: false
+weight_select_max: 100
+langcode: ru
+default_langcode: ru
+_core:
+  default_config_hash: yXadRE77Va-G6dxhd2kPYapAvbnSvTF6hO4oXiOEynI

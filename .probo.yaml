@@ -1,0 +1,51 @@
+image: proboci/ubuntu-14.04-lamp:php-7.1
+assets:
+  - terminus.sh
+steps:
+  - name: Install terminus
+    command: 'curl -O https://raw.githubusercontent.com/pantheon-systems/terminus-installer/master/builds/installer.phar && php installer.phar install'
+  - name: Log in to terminus
+    command: 'source $ASSET_DIR/terminus.sh ; vendor/bin/terminus auth:login --email=$EMAIL --machine-token=$TOKEN'
+  - name: Get the latest backup db from Pantheon test
+    command: 'vendor/bin/terminus backup:get adco.live --element=database --to=$ASSET_DIR/test-export.sql.gz'
+  - name: Update composer
+    command: '/usr/local/bin/composer self-update'
+  - name: Add Drupal package repository for Drupal 8.
+    command: 'composer config -d /src/ repositories.drupal composer https://packages.drupal.org/8'
+  - name: Install composer packages with dependencies.
+    command: 'composer install -d /src/'
+  - name: Running NPM, building theme
+    plugin: Shell
+    command: 'cd $SRC_DIR/docroot/themes/adco; npm install; gulp build;'
+  - name: AndrewDavidson site provision
+    drupalVersion: 8
+    plugin: Drupal
+    databaseGzipped: true
+    databaseUpdates: true
+    clearCaches: false
+    database: test-export.sql.gz
+    databaseName: drupal
+    databaseUser: drupal
+    subDirectory: docroot
+    settingsAppend: |
+      $config_directories = ['sync' => '../config/sync'];
+  - name: opcache
+    plugin: Script
+    script: |
+      echo 'opcache.enable=1' >> /etc/php/7.1/mods-available/opcache.ini
+      echo 'opcache.enable_cli=1' >> /etc/php/7.1/mods-available/opcache.ini
+      echo 'opcache.memory_consumption=192' >> /etc/php/7.1/mods-available/opcache.ini
+      echo 'opcache.interned_strings_buffer=16' >> /etc/php/7.1/mods-available/opcache.ini
+      echo 'opcache.max_accelerated_files=3907' >> /etc/php/7.1/mods-available/opcache.ini
+      echo 'opcache.validate_timestamps=0' >> /etc/php/7.1/mods-available/opcache.ini
+      echo 'opcache.fast_shutdown=1' >> /etc/php/7.1/mods-available/opcache.ini
+      apache2ctl graceful
+  - name: Post deploy commands
+    plugin: Script
+    script: |
+      drush cim -y
+      drush en -y stage_file_proxy
+      drush -y config-set stage_file_proxy.settings origin 'http://live-adco.pantheonsite.io/'
+      drush -y config-set system.image toolkit 'gd'
+      drush -y config-set system.file path.temporary '/tmp'
+      drush cr

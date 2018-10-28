@@ -1,0 +1,15 @@
+/*
+  Miscellaneous settings for elements
+ */
+
+// Disable scroll
+body.no-scroll {
+  height: 100%;
+  overflow: hidden;
+}
+
+// responsive images
+img {
+  max-width: 100%;
+  height: auto;
+}

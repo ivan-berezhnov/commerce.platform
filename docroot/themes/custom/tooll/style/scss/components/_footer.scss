@@ -1,0 +1,187 @@
+// AD-CO website footer styles
+
+footer.main-footer {
+  background-color: rgba($color-black, .8);
+
+  .wrapper {
+  }
+
+  .region-footer-top {
+    @include clearfix;
+    border-bottom: 1px solid rgba($color-white, .4);
+    margin: 0 7%;
+
+    #block-site-branding {
+      float: left;
+      margin: 40px 0 20px 0;
+      width: 104px;
+      height: 40px;
+    }
+
+    #block-footertopcontact {
+      background-color: rgba($color-key-lime-pie, .8);
+      float: right;
+      margin: 40px 0 20px 0;
+      width: 148px;
+      height: 40px;
+      border-radius: 20px;
+      ul.menu {
+        @include inline-list-items(none);
+        li a {
+          display: block;
+          padding: 12px 40px;
+          text-transform: uppercase;
+          color: rgba($color-black, .8);
+          font-size: 1.1rem;
+        }
+      }
+    }
+  }
+
+  .region-footer {
+    @include clearfix;
+    margin: 15px 7%;
+
+    ul.menu {
+      @include no-bullet;
+    }
+
+    li {
+      a {
+        display: block;
+        padding: 2px 0;
+        padding-right: 5px;
+        color: $color-white;
+        font-weight: normal;
+        font-size: 1.4rem;
+      }
+    }
+
+    nav {
+      > ul > li {
+        > a {
+          color: $color-dusty-gray;
+          margin-bottom: 10px;
+          font-size: 1.1rem;
+          text-transform: uppercase;
+        }
+        > ul > li > a {
+          font-weight: bold;
+        }
+        > ul > li > ul li:last-child a {
+          margin-bottom: 20px;
+        }
+      }
+    }
+
+    #block-footersolutions {
+      .wrapper > li > a  {
+        font-weight: bold;
+      }
+      .submenu-level-2 li:last-child a {
+        margin-bottom: 20px;
+      }
+    }
+
+    #block-footerclientportal,
+    #block-footerabouttooll,
+    #block-footerconnect {
+      > ul > li > ul > li:last-child {
+        margin-bottom: 20px;
+      }
+
+      li a {
+        font-weight: normal;
+      }
+
+    }
+
+    #block-footersolutions,
+    #block-footerinsights {
+      float: left;
+      clear: both;
+    }
+
+    #block-footerproducts,
+    #block-footerclientportal,
+    #block-footerabouttooll,
+    #block-footerconnect {
+      float:right;
+    }
+
+    nav {
+      width: 50%;
+    }
+
+    @include mq($bp768) {
+      nav {
+        width: 25%;
+      }
+
+      #block-footerproducts,
+      #block-footerclientportal,
+      #block-footerabouttooll,
+      #block-footerconnect {
+        float: left;
+      }
+
+      #block-footersolutions,
+      #block-footerinsights {
+        clear: none;
+      }
+    }
+
+    @include mq($bp1280) {
+      nav {
+        width: 20%
+      }
+
+      nav#block-footersolutions {
+        width: 40%;
+      }
+
+      #block-footersolutions {
+        .wrapper {
+          margin-right: 20px;
+          float: left;
+        }
+      }
+    }
+  }
+
+  .region-footer-bottom {
+    @include clearfix;
+    background-color: $color-white;
+    text-align: center;
+
+    #block-copyrightblock {
+      padding-top: 20px;
+      font-size: 1.4rem;
+      @include mq($bp960) {
+        float: left;
+        margin-left: 7%;
+      }
+    }
+
+    #block-footerbottom {
+      padding-top: 20px;
+      ul.menu {
+        @include inline-list-items(left);
+        display: inline-block;
+        li a {
+          font-size: 1.4rem;
+          padding: 0 7px;
+          border-right: 1px solid rgba($color-dusty-gray, .5);
+          font-weight: normal;
+        }
+        li:last-child a {
+          border-right: 1px solid $color-white;
+        }
+      }
+      @include mq($bp960) {
+        float: right;
+        margin-right: 7%;
+      }
+    }
+  }
+}

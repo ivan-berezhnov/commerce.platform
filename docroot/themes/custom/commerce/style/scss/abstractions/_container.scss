@@ -1,0 +1,8 @@
+// Adds default paddings page components
+
+@mixin container {
+  @include mq($bp1024){
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+}

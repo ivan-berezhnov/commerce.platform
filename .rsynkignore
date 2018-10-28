@@ -1,0 +1,13 @@
+.gitignore
+.git/
+.idea/
+node_modules/
++docroot/themes/adco/.gitignore
+-web/vendor/
++vendor/
+*.sql
+*.sql.zip
+*.sql.tar
+*.sql.tar.gz
+docroot/sites/default/files/
+docroot/sites/default/.env

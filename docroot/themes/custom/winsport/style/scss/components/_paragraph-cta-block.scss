@@ -1,0 +1,36 @@
+//CTA block styles
+
+.paragraph--type--cta-block {
+  width: 345px;
+  margin: 40px auto;
+
+  @include mq($bp1024){
+    width: 400px;
+    margin: 20px;
+  }
+
+  .field--name-field_title {
+    background-size: cover;
+    border-radius: 6px 6px 0 0;
+    padding: 36px 20px;
+    font-family: Montserrat;
+    font-size: 2.4rem;
+    font-weight: 600;
+    line-height: 1.42;
+
+    @include mq($bp1024){
+      padding: 36px 40px;
+    }
+  }
+  .field--name-field_cta_link {
+    border-radius: 0 0 6px 6px;
+    height: 63px;
+    padding: 20px;
+    background-color: $color-botticelli;
+    @include icoMoon('arrow-right', 'after');
+
+    @include mq($bp1024){
+      padding: 20px 40px;
+    }
+  }
+}

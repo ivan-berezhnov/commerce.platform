@@ -1,0 +1,18 @@
+styles:
+  css:
+    theme:
+      style/css/styles.css: {}
+      'https://fonts.googleapis.com/css?family=Lato|Montserrat': { type: external }
+
+global-header:
+  js:
+    js/dist/global-menu.min.js: {minified: true}
+  dependencies:
+  - core/drupal
+  - core/jquery.once
+
+global-scripts:
+  js:
+    js/dist/select-dropdown.min.js: {minified: true}
+  dependencies:
+  - core/jquery

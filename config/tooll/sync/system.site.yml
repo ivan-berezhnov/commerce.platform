@@ -1,0 +1,14 @@
+uuid: ced0d747-be5b-46ea-8a4b-dfec58432e32
+name: Tooll.Shop
+mail: ivan.berezhnov@icloud.com
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /node
+admin_compact_mode: false
+weight_select_max: 100
+langcode: ru
+default_langcode: ru
+_core:
+  default_config_hash: yXadRE77Va-G6dxhd2kPYapAvbnSvTF6hO4oXiOEynI
